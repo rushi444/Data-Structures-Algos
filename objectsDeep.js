@@ -1,10 +1,12 @@
+
+
 const person1 = {
     id: 1,
     name: 'Rushi',
     email: 'rushi@test.com',
   };
   
-  const person2 = {}
+  const person2 = {...person1}
 
   for(let key in person1){
       person2[key] = person1[key]
@@ -17,4 +19,31 @@ const person1 = {
   console.log('person 2', person2);
   
   console.log('person 1', person1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // JS Specific
+  // - Number, String, Boolean, undefined, null
+
+
   
