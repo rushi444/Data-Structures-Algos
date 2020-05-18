@@ -24,3 +24,29 @@ const mergeSortHelper = (leftHalf, rightHalf) => {
   }
   return sortedArray;
 };
+
+// Using a heap(more efficient)
+
+function mergeSortedArrays(arrays) {
+  const sortedList = [];
+  const smallestItems = [];
+  for (let arrayIdx = 0; arrayIdx < arrays.length; arrayIdx++) {
+    smallestItems.push({
+      arrayIdx,
+      elementIdx: 0,
+      num: arrays[arrayIdx][0],
+    });
+    const minHeap = new minHeap(smallestItems);
+    while (!minHeap.isEmpty()) {
+      const { arrayIdx, elementIdx, num } = minHeap.remove();
+      sortedList.push(num);
+      if (elementIdx === arrays[arrayIdx].length - 1) continue;
+      minHeap.insert({
+        arrayIdx,
+        elementIdx: elementIdx + 1,
+        num: arrays[arrayIdx][elementIdx + 1],
+      });
+    }
+  }
+  return sortedList;
+}
