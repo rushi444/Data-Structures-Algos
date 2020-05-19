@@ -1,6 +1,5 @@
 const React = require('./React')
 
-
 const [count, setCount] = React.useState(1);
 
 console.log(count());
