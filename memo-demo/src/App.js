@@ -1,37 +1,18 @@
-import React, { useState, useMemo } from 'react';
+import React, { lazy, Suspense } from 'react';
 import './App.css';
+import MyComp from './components/MyComp';
+// import MyComp2 from './components/MyComp2';
+
+const MyComp2 = lazy(() => import('./components/MyComp2'));
 
 export default function App() {
-  const [number, setNumber] = useState(0);
-  const [dark, setDark] = useState(false);
-
-  // const doubleNumber = slowFunction(number);
-  const doubleNumber = useMemo(() => {
-    return slowFunction(number);
-  }, [number]);
-
-  const themeStyles = {
-    backgroundColor: dark ? 'black' : 'white',
-    color: dark ? 'white' : 'black',
-  };
-
   return (
-    <div style={{ textAlign: 'center' }}>
-      <input
-        type='number'
-        value={number}
-        onChange={(e) => setNumber(parseInt(e.target.value))}
-      />
-      <button onClick={() => setDark((prevDark) => !prevDark)}>
-        Change color
-      </button>
-      <div style={themeStyles}>{doubleNumber}</div>
+    <div>
+      <MyComp />
+      <Suspense fallback={<div>Loading...</div>}>
+        <MyComp2 />
+      </Suspense>
     </div>
   );
 }
 
-function slowFunction(num) {
-  console.log('slowfunction');
-  for (let i = 0; i <= 1000000000; i++) {}
-  return num * 2;
-}
