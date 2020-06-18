@@ -1,9 +1,9 @@
 const React = (() => {
   function useState(initValue) {
-    let _val = initValue;
-    let state = () => _val;
+    let val = initValue;
+    let state = () => val;
     let setState = (newVal) => {
-      _val = newVal;
+      val = newVal;
     };
     return [state, setState];
   }
