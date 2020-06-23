@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useCount } from '../useCount';
 
 export const CounterOne = () => {
-  const [count, setCount] = useState(0);
+  const { count, increment, decrement } = useCount();
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>Counter 1</h1>
       <p>{count}</p>
       <div>
-        <button onClick={() => setCount(count + 1)}>Increment</button>
-        <button onClick={() => setCount(count - 1)}>Decrement</button>
+        <button onClick={() => increment()}>Increment</button>
+        <button onClick={() => decrement()}>Decrement</button>
       </div>
     </div>
   );
