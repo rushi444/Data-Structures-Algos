@@ -1,18 +1,23 @@
-import React, { lazy, Suspense } from 'react';
-import './App.css';
-import MyComp from './components/MyComp';
-// import MyComp2 from './components/MyComp2';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { CounterOne } from './components/CounterOne';
+import { CounterTwo } from './components/CounterTwo';
 
-const MyComp2 = lazy(() => import('./components/MyComp2'));
-
-export default function App() {
+const App = () => {
   return (
-    <div>
-      <MyComp />
-      <Suspense fallback={<div>Loading...</div>}>
-        <MyComp2 />
-      </Suspense>
-    </div>
+    <Router>
+      <div style={{textAlign: 'center'}}>
+        <h1>Custom Hooks</h1>
+        <Link to='/'>Counter 1</Link>
+        <p />
+        <Link to='/counter2'>Counter 2</Link>
+      </div>
+      <Switch>
+        <Route exact path='/' component={CounterOne} />
+        <Route exact path='/counter2' component={CounterTwo} />
+      </Switch>
+    </Router>
   );
-}
+};
 
+export default App;
