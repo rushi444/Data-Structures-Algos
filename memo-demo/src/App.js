@@ -7,10 +7,10 @@ const App = () => {
   return (
     <Router>
       <div style={{textAlign: 'center'}}>
-        <h1>Custom Hooks</h1>
-        <Link to='/'>Counter 1</Link>
+        <h1>useEffect</h1>
+        <Link to='/'>Home</Link>
         <p />
-        <Link to='/counter2'>Counter 2</Link>
+        <Link to='/counter2'>Counter</Link>
       </div>
       <Switch>
         <Route exact path='/' component={CounterOne} />

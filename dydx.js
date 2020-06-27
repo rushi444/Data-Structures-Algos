@@ -14,16 +14,16 @@ const maxEvents = (arrival, duration) => {
     }
   }
 
-  let times = Object.keys(schedule)
-  let counter = 1
-  let nextAvailable = arrival[0] + Math.min(...times[0])
+  let times = Object.keys(schedule);
+  let counter = 1;
+  let nextAvailable = arrival[0] + Math.min(...times[0]);
 
-  for(let i = 1; i < times.length; i++){
-    if(times[i] < nextAvailable){
-        continue
+  for (let i = 1; i < times.length; i++) {
+    if (times[i] < nextAvailable) {
+      continue;
     } else {
-        nextAvailable = times[i] + Math.min(...times[i])
-        counter = counter + 1
+      nextAvailable = times[i] + Math.min(...times[i]);
+      counter = counter + 1;
     }
   }
   console.log(counter);
