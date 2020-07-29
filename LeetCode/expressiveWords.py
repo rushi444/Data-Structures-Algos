@@ -30,3 +30,23 @@ class Solution:
                     break
             res += flag
         return res
+
+def max_sliding_window(nums, k)
+  max_window = []
+  queue = []
+  
+  nums.size.times do |i|
+    while queue.any? && queue[0] < i-k+1  do
+      queue.shift
+    end
+    
+    while queue.any? && nums[queue[-1]] < nums[i] do
+      queue.pop
+    end
+
+    queue.push i
+    max_window.push nums[queue[0]] if i >= k-1
+  end
+  
+  max_window
+end
